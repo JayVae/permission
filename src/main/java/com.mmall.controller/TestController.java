@@ -1,5 +1,13 @@
 package com.mmall.controller;
 
+import com.mmall.common.ApplicationContextHelper;
+import com.mmall.common.JsonData;
+import com.mmall.dao.SysAclModuleMapper;
+import com.mmall.exception.ParamException;
+import com.mmall.model.SysAclModule;
+import com.mmall.param.TestVo;
+import com.mmall.util.BeanValidator;
+import com.mmall.util.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +23,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class TestController {
 
-    @RequestMapping("/hello")
+    @RequestMapping("/hello.json")
     @ResponseBody
-    public String hello(){
+    public JsonData hello(){
         log.info("hello");
-        return "hello permission";
+        throw new RuntimeException("test exception");
+//        return JsonData.success("HELLO PERMISSON");
+    }
+
+    @RequestMapping("/validate.json")
+    @ResponseBody
+    public JsonData validate(TestVo vo) throws ParamException {
+        log.info("validate");
+        BeanValidator.check(vo);
+        SysAclModuleMapper sysAclModuleMapper = ApplicationContextHelper.popBean(SysAclModuleMapper.class);
+        Integer id = vo.getId();
+
+        SysAclModule sysAclModule = sysAclModuleMapper.selectByPrimaryKey(id);
+        log.info(JsonMapper.obj2String(sysAclModule));
+
+        return JsonData.success("test validate");
+//        SysAclModuleMapper moduleMapper = ApplicationContextHelper.popBean(SysAclModuleMapper.class);
+//        SysAclModule module = moduleMapper.selectByPrimaryKey(1);
+//        log.info(JsonMapper.obj2String(module));
+//        BeanValidator.check(vo);
+//        return JsonData.success("test validate");
     }
 
 }

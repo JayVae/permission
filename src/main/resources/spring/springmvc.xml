@@ -9,6 +9,14 @@
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <bean class="com.mmall.common.HttpInterceptor"/>
+    </mvc:interceptors>
+
+    <bean class="com.mmall.common.ApplicationContextHelper" lazy-init="false"/>
+
+    <bean class="com.mmall.common.SpringExceptionResolver"/>
+
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 <!--返回json-->
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
@@ -22,6 +30,12 @@
     <!--静态资源映射-->
     <!--<mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>-->
     <!--<mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>-->
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/bootstrap3.3.5/" mapping="/bootstrap3.3.5/**"/>
+    <mvc:resources location="/assets/" mapping="/assets/**"/>
+    <mvc:resources location="/ztree/" mapping="/ztree/**"/>
+
     <!--配置多媒体文件解析器-->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
