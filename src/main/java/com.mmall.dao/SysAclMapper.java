@@ -1,5 +1,6 @@
 package com.mmall.dao;
 
+import com.mmall.beans.PageQuery;
 import com.mmall.model.SysAcl;
 import com.mmall.model.SysAclExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,10 @@ public interface SysAclMapper {
     int updateByPrimaryKeySelective(SysAcl record);
 
     int updateByPrimaryKey(SysAcl record);
+
+    int countByAclModuleId(@Param("aclModuleId") int aclModuleId);
+
+    List<SysAcl> getPageByAclModuleId(@Param("aclModuleId") int aclModuleId,@Param("page") PageQuery page);
+
+    int countByNameAndAclModuleId(@Param("aclModuleId") int aclModuleId, @Param("name") String name, @Param("id") Integer id);
 }

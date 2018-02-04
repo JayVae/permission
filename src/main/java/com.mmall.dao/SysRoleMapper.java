@@ -28,4 +28,8 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+    List<SysRole> getAll();
+
+    int countByName(@Param("name")String name,@Param("id") Integer id);
 }

@@ -1,5 +1,6 @@
 package com.mmall.dao;
 
+import com.mmall.beans.PageQuery;
 import com.mmall.model.SysUser;
 import com.mmall.model.SysUserExample;
 import org.apache.ibatis.annotations.Param;
@@ -34,4 +35,8 @@ public interface SysUserMapper {
     int countByMail(@Param("mail") String mail, @Param("id") Integer userId);
 
     int countByTelephone(@Param("telephone") String telephone,@Param("id") Integer userId);
+
+    int countByDeptId(@Param("deptId") int deptId);
+
+    List<SysUser> getPageByDeptId(@Param("deptId") int deptId, @Param("page") PageQuery page);
 }

@@ -290,8 +290,8 @@
   <update id="batchUpdateLevel" parameterType="map">
     <foreach collection="sysDeptList" item="sysDept" separator=";">
       UPDATE sys_dept
-      SET level = #{dept.level}
-      where id={dept.id}
+      SET level = #{sysDept.level}
+      where id={sysDept.id}
     </foreach>
   </update>
 
