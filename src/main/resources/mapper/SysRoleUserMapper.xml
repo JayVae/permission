@@ -225,4 +225,25 @@
       operate_ip = #{operateIp,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getRoleIdListByUserId" parameterType="map" resultType="int">
+    SELECT role_id
+    FROM sys_role_user
+    WHERE user_id=#{userId}
+  </select>
+
+  <select id="getUserIdListByRoleId" parameterType="int" resultType="int">
+    SELECT user_id
+    FROM sys_role_user
+    WHERE role_id = #{roleId}
+  </select>
+
+  <select id="getUserIdListByRoleIdList" parameterType="map" resultType="int">
+    SELECT user_id
+    FROM sys_role_user
+    WHERE role_id IN 
+    <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+      #{roleId}
+    </foreach>
+  </select>
 </mapper>

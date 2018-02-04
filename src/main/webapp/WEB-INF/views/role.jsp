@@ -289,6 +289,8 @@
             return v.length > 0 ? v.substring(1): v;
         }
 
+//        使用ztree插件进行渲染
+//        先把权限点放在zTreeObj中，而把权限模块的信息放在nodeMap中
         function renderRoleTree(aclModuleList) {
             zTreeObj = [];
             recursivePrepareTreeData(aclModuleList);
