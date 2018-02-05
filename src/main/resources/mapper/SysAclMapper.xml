@@ -363,4 +363,11 @@
             #{id}
         </foreach>
     </select>
+
+    <select id="getByUrl" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_acl
+        WHERE url = #{url}
+    </select>
 </mapper>
