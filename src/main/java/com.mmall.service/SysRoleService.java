@@ -37,10 +37,12 @@ public class SysRoleService {
     private SysRoleAclMapper sysRoleAclMapper;
     @Resource
     private SysUserMapper sysUserMapper;
+    @Resource
+    private SysLogService sysLogService;
 
     public void save(RoleParam param) {
         BeanValidator.check(param);
-        if (checkExist(param.getName(),param.getId())){
+        if (checkExist(param.getName(), param.getId())) {
             throw new ParamException("角色名称已经存在");
         }
         SysRole role = SysRole.builder().name(param.getName()).status(param.getStatus()).type(param.getType())
@@ -49,6 +51,7 @@ public class SysRoleService {
         role.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         role.setOperateTime(new Date());
         sysRoleMapper.insertSelective(role);
+        sysLogService.saveRoleLog(null,role);
     }
 
     public void update(RoleParam param) {
@@ -65,6 +68,7 @@ public class SysRoleService {
         after.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         after.setOperateTime(new Date());
         sysRoleMapper.updateByPrimaryKeySelective(after);
+        sysLogService.saveRoleLog(before,after);
     }
 
     public List<SysRole> getAll() {
@@ -72,7 +76,7 @@ public class SysRoleService {
     }
 
     private boolean checkExist(String name, Integer id) {
-        return sysRoleMapper.countByName(name, id)>0;
+        return sysRoleMapper.countByName(name, id) > 0;
     }
 
 

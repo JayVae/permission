@@ -28,6 +28,8 @@ public class SysUserService {
 
     @Resource
     private SysUserMapper sysUserMapper;
+    @Resource
+    private SysLogService sysLogService;
 
     public void save(UserParam param) {
         BeanValidator.check(param);
@@ -53,7 +55,7 @@ public class SysUserService {
         Mail mail = Mail.builder().subject("密码").message("欢迎！您的初始密码是"+password+"请登录系统更改密码").receivers(receivers).build();
         boolean flag = MailUtil.send(mail);
         sysUserMapper.insertSelective(user);
-//        sysLogService.saveUserLog(null, user);
+        sysLogService.saveUserLog(null, user);
     }
 
     public void update(UserParam param) {
@@ -72,7 +74,7 @@ public class SysUserService {
         after.setOperateIp(IpUtil.getRemoteIp(RequestHolder.getCurrentRequest()));
         after.setOperateTime(new Date());
         sysUserMapper.updateByPrimaryKeySelective(after);
-//        sysLogService.saveUserLog(before, after);
+        sysLogService.saveUserLog(before, after);
     }
 
     public boolean checkEmailExist(String mail, Integer userId) {
