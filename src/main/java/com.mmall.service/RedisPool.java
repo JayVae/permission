@@ -1,7 +1,6 @@
 package com.mmall.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
@@ -12,7 +11,7 @@ import javax.annotation.Resource;
  * @Date: Created in 20:36 2018/2/5
  * @Modified By:
  */
-@Service("redisPool")
+//@Service("redisPool")
 @Slf4j
 public class RedisPool {
 

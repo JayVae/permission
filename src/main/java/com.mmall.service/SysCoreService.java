@@ -83,8 +83,8 @@ public class SysCoreService {
             return true;
         }
 //被注释的是使用缓存的
-        List<SysAcl> userAclList = getCurrentUserAclListFromCache();
-//        List<SysAcl> userAclList = getCurrentUserAclList();
+//        List<SysAcl> userAclList = getCurrentUserAclListFromCache();
+        List<SysAcl> userAclList = getCurrentUserAclList();
         Set<Integer> userAclIdSet = userAclList.stream().map(acl -> acl.getId()).collect(Collectors.toSet());
 
         boolean hasValidAcl = false;

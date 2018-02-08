@@ -14,7 +14,7 @@
     <context:property-placeholder location="classpath:properties/*.properties" />
 
     <!--redis-->
-    <import resource="classpath:redis.xml"/>
+    <!--<import resource="classpath:redis.xml"/>-->
     <!-- 数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
