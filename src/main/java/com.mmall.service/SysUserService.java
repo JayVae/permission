@@ -104,4 +104,13 @@ public class SysUserService {
     public List<SysUser> getAll() {
         return sysUserMapper.getAll();
     }
+
+    public int delete(int userId) {
+        SysUser user = sysUserMapper.selectByPrimaryKey(userId);
+        Preconditions.checkNotNull(user, "待删除的用户不存在，无法删除");
+        int deptId = user.getDeptId();
+        sysUserMapper.deleteByPrimaryKey(userId);
+        return deptId;
+
+    }
 }

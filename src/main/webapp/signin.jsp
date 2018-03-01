@@ -36,6 +36,15 @@
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript">
+
+        // 在被嵌套时就刷新上级窗口
+        if(window.parent != window){
+            window.parent.location.reload(true);
+        }
+    </script>
+
 </head>
 
 <body>

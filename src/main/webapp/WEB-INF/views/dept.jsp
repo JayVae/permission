@@ -183,6 +183,9 @@
             <a class="red user-acl" href="#" data-id="{{id}}">
                 <i class="ace-icon fa fa-flag bigger-100"></i>
             </a>
+            <a class="red user-delete" href="#" data-id="{{id}}" data-name="{{username}}">
+                <i class="ace-icon fa fa-trash-o bigger-100"></i>
+            </a>
         </div>
     </td>
 </tr>
@@ -465,6 +468,28 @@
                         }
                     }
                 });
+            });
+            $(".user-delete").click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var userId = $(this).attr("data-id");
+                var userName = $(this).attr("data-name");
+                if (confirm("确定要删除用户["+userName+ "]"+"吗?")) {
+                    $.ajax({
+                        url: "/sys/user/delete.json",
+                        data: {
+                            userId: userId
+                        },
+                        success: function (result) {
+                            if (result.ret) {
+                                showMessage("删除用户[" + userName + "]", "操作成功", true);
+                                loadUserList(result.data.deptId);
+                            } else {
+                                showMessage("删除用户[" + userName + "]", result.msg, false);
+                            }
+                        }
+                    });
+                }
             });
         }
 

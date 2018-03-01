@@ -9,12 +9,20 @@
     <script type="text/javascript" src="/assets/js/jquery.bootstrap-duallistbox.min.js"></script>
     <style type="text/css">
         .bootstrap-duallistbox-container .moveall, .bootstrap-duallistbox-container .removeall {
-            width: 50%;
+            width: 48%;
         }
         .bootstrap-duallistbox-container .move, .bootstrap-duallistbox-container .remove {
-            width: 49%;
+            width: 48%;
         }
     </style>
+
+    <style type="text/css">
+        .ztree li span.button.pIcon01_ico_open{margin-right:2px; background: url(../../ztree/img/diy/1_open.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+        .ztree li span.button.pIcon01_ico_close{margin-right:2px; background: url(../../ztree/img/diy/1_close.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+        .ztree li span.button.icon01_ico_docu{margin-right:2px; background: url(../../ztree/img/diy/3.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+
+    </style>
+
 </head>
 <body class="no-skin" youdao="bind" style="background: white">
 <input id="gritter-light" checked="" type="checkbox" class="ace ace-switch ace-switch-5"/>
@@ -311,9 +319,11 @@
                                 id: aclPrefix + acl.id,
                                 pId: modulePrefix + acl.aclModuleId,
                                 name: acl.name + ((acl.type == 1) ? '(菜单)' : ''),
-                                chkDisabled: !acl.hasAcl,
+//                                chkDisabled: !acl.hasAcl,
+                                chkDisabled: false,
                                 checked: acl.checked,
-                                dataId: acl.id
+                                dataId: acl.id,
+                                iconSkin:"icon01"
                             });
                             if(acl.checked) {
                                 hasChecked = true;
@@ -326,7 +336,8 @@
                             id : modulePrefix + aclModule.id,
                             pId: modulePrefix + aclModule.parentId,
                             name: aclModule.name,
-                            open: hasChecked
+                            open: hasChecked,
+                            iconSkin:"pIcon01"
                         };
                         var tempAclModule = nodeMap[modulePrefix + aclModule.id];
                         while(hasChecked && tempAclModule) {
@@ -335,7 +346,8 @@
                                     id: tempAclModule.id,
                                     pId: tempAclModule.pId,
                                     name: tempAclModule.name,
-                                    open: true
+                                    open: true,
+                                    iconSkin:"pIcon01"
                                 }
                             }
                             tempAclModule = nodeMap[tempAclModule.pId];

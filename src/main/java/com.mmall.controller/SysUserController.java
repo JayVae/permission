@@ -65,6 +65,15 @@ public class SysUserController {
         return JsonData.success(map);
     }
 
+    @RequestMapping("/delete.json")
+    @ResponseBody
+    public JsonData delete(@RequestParam("userId") int userId) {
+        int deptId=sysUserService.delete(userId);
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("deptId", deptId);
+        return JsonData.success(map);
+    }
+
     @RequestMapping("/noAuth.page")
     public ModelAndView noAuth(){
         return new ModelAndView("noAuth");
