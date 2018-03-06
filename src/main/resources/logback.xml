@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds">
 
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="e:/log/SSM/"/>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
@@ -8,23 +11,43 @@
     </appender>
 
     <!--下述是按时间进行压缩日志，appender是处理方式，logger是处理对象，对应appender-->
-    <!--<appender name="permission" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <appender name="permission" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--<file>${catalina.home}/logs/permission.log</file>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-            <!--<FileNamePattern>${catalina.home}/logs/permission.%d{yyyy-MM-dd}.log.gz</FileNamePattern>-->
-        <!--</rollingPolicy>-->
-        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
-            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>-->
-        <!--</layout>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--<FileNamePattern>${catalina.home}/logs/permission.%d{yyyy-MM-dd}.log</FileNamePattern>-->
+            <FileNamePattern>${LOG_HOME}/permission.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>20</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <logger name="xxx" level="INFO">
+        <appender-ref ref="permission"/>
+    </logger>
+
+    <!--&lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
+    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
+        <!--&lt;!&ndash;日志异步到数据库 &ndash;&gt;-->
+        <!--<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
+            <!--&lt;!&ndash;连接池 &ndash;&gt;-->
+            <!--<dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+                <!--<driverClass>com.mysql.jdbc.Driver</driverClass>-->
+                <!--<url>jdbc:mysql://localhost:3306/test1?characterEncoding=utf-8</url>-->
+                <!--<user>root</user>-->
+                <!--<password>root</password>-->
+            <!--</dataSource>-->
+        <!--</connectionSource>-->
     <!--</appender>-->
-    <!---->
-    <!--<logger name="xxx" level="INFO">-->
-        <!--<appender-ref ref="permission"/>-->
-    <!--</logger>-->
 
     <!-- TRACE < DEBUG < INFO < WARN < ERROR -->
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="permission"/>
+        <!--<appender-ref ref="DB"/>-->
     </root>
+
+
 
 </configuration>
