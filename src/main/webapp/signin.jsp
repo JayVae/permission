@@ -2,6 +2,7 @@
 <%@ page import="org.apache.commons.lang3.StringUtils" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html lang="zh-CN">
+<%--登录成功后想跳转的链接--%>
 <%
     String ret = request.getParameter("ret");
     if(StringUtils.isNotBlank(ret)) {
@@ -21,6 +22,7 @@
 
     <title>登陆</title>
 
+    <script src="/assets/js/jquery-2.1.0.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
@@ -52,13 +54,50 @@
 //            $("#imgObj").src = "/VerifyCode?d=" + timenow;
         }
     </script>
-
+    <script type="text/javascript">
+        function check(){
+            var username = $("#inputEmail").val();
+            var password = $("#inputPassword").val();
+            if (username =="")
+            {
+                window.alert("请输入您的用户名!");
+                $("#inputEmail").focus();
+                return false;
+            }
+            if (password =="")
+            {
+                window.alert('请输入密码');
+                $("#inputPassword").focus();
+                return false;
+            }
+//        if (document.form1.Email.value=="")
+//        {
+//            alert("请输入您的Email地址!");
+//            form1.Email.focus();
+//            return false;
+//        }
+//        var myRegex = /@.*\.[a-z]{2,6}/;
+//        var email = form1.Email.value;
+//        email = email.replace(/^ | $/g,"");
+//        email = email.replace(/^\.*|\.*$/g,"");
+//        email = email.toLowerCase();
+//
+//        //验证电子邮件的有效性
+//        if (email == "" || !myRegex.test(email))
+//        {
+//            alert ("请输入有效的E-MAIL!");
+//            form1.Email.focus();
+//            return false;
+//        }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
 
 <div class="container">
-    <form class="form-signin" action="/login.page?ret=<%=ret%>" method="post">
+    <form class="form-signin" onsubmit="return check();" action="/login.page?ret=<%=ret%>" method="post">
         <h2 class="form-signin-heading">请登陆</h2>
         <label for="inputEmail" class="sr-only">邮箱/电话</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="Email/Telephone" name="username" required autofocus value="${username}">
@@ -69,12 +108,14 @@
             <img id="imgObj" style="height:40px;"  title="点击我,换一个！" src="/VerifyCode" onclick="changeValidateCode()"/>
         </div>
         <div class="checkbox" style="color: red;">${error}</div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>
+        <%--<button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>--%>
+        <input type="submit" name="submit" value="登录">
     </form>
 </div>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
+
 
 </body>
 </html>
