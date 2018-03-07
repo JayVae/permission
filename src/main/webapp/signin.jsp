@@ -44,6 +44,14 @@
             window.parent.location.reload(true);
         }
     </script>
+    <script type="text/javascript">
+        //获取验证码
+        function changeValidateCode() {
+            var timenow = new Date().getTime();
+				document.getElementById("imgObj").src = "VerifyCode?d=" + timenow;
+//            $("#imgObj").src = "/VerifyCode?d=" + timenow;
+        }
+    </script>
 
 </head>
 
@@ -56,6 +64,10 @@
         <input type="text" id="inputEmail" class="form-control" placeholder="Email/Telephone" name="username" required autofocus value="${username}">
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required >
+        <div style="margin-bottom:10px;">
+            <input id="validateCode" class="form-control" placeholder="请输入验证码" name="validateCode" required >
+            <img id="imgObj" style="height:40px;"  title="点击我,换一个！" src="/VerifyCode" onclick="changeValidateCode()"/>
+        </div>
         <div class="checkbox" style="color: red;">${error}</div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>
     </form>
@@ -63,5 +75,6 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
+
 </body>
 </html>
