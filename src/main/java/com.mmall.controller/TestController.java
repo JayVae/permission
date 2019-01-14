@@ -8,6 +8,9 @@ import com.mmall.model.SysAclModule;
 import com.mmall.param.TestVo;
 import com.mmall.util.BeanValidator;
 import com.mmall.util.JsonMapper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/test")
 @Slf4j
+@Api(value = "restful", description = "测试")
 public class TestController {
 
     @RequestMapping("/hello.json")
@@ -33,7 +37,8 @@ public class TestController {
 
     @RequestMapping("/validate.json")
     @ResponseBody
-    public JsonData validate(TestVo vo) throws ParamException {
+    @ApiOperation(value = "测试专用",httpMethod = "POST")
+    public JsonData validate(@ApiParam(required = true, name = "test", value = "教程入参") TestVo vo) throws ParamException {
         log.info("validate");
         BeanValidator.check(vo);
         SysAclModuleMapper sysAclModuleMapper = ApplicationContextHelper.popBean(SysAclModuleMapper.class);

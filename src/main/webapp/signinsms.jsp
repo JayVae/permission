@@ -118,12 +118,9 @@
         <h2 class="form-signin-heading">请手机登陆</h2>
         <label for="inputEmail" class="sr-only">邮箱/电话</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="Email/Telephone" name="username" required autofocus value="${username}">
-        <div style="margin-bottom:10px;" onclick="send()" id="mobilecode">点击向${username}发送验证码</div>>
-        <label for="inputPassword" class="sr-only">请输入手机验证码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required >
+        <div style="margin-bottom:10px;" onclick="send()" id="mobilecode"><button class="btn btn-lg btn-primary btn-block" type="submit">点击发送验证码</button></div>
         <div style="margin-bottom:10px;">
-            <input id="validateCode" class="form-control" placeholder="请输入验证码" name="validateCode" required >
-            <img id="imgObj" style="height:40px;"  title="点击我,换一个！" src="/VerifyCode" onclick="changeValidateCode()"/>
+            <input id="validateCode" class="form-control" placeholder="请输入手机验证码" name="validateCode" required >
         </div>
         <div class="checkbox" style="color: red;">${error}</div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>

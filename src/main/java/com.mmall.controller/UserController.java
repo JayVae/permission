@@ -29,6 +29,7 @@ public class UserController {
 
     @RequestMapping("/login.page")
     public void login(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String validateCode = request.getParameter("validateCode");
@@ -72,6 +73,7 @@ public class UserController {
         if (StringUtils.isNotBlank(ret)) {
             request.setAttribute("ret", ret);
         }
+        System.out.println(request.getAttribute("error"));
         String path = "signin.jsp";
         request.getRequestDispatcher(path).forward(request, response);
     }

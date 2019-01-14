@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 配置包扫描器 -->
@@ -11,6 +12,7 @@
 
     <mvc:interceptors>
         <bean class="com.mmall.common.HttpInterceptor"/>
+
     </mvc:interceptors>
 
     <bean class="com.mmall.common.ApplicationContextHelper" lazy-init="false"/>
@@ -36,6 +38,12 @@
     <mvc:resources location="/assets/" mapping="/assets/**"/>
     <mvc:resources location="/ztree/" mapping="/ztree/**"/>
 
+    <!--重要！将你的SwaggerConfig配置类注入-->
+    <bean class="com.mmall.swagger.SwaggerConfig"/>
+    <!--重要！配置swagger资源不被拦截-->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
+
     <!--配置多媒体文件解析器-->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -44,5 +52,13 @@
         <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
         <property name="maxUploadSize" value="5242880"></property>
     </bean>
+
+
+    <!--将静态资源交由默认的servlet处理-->
+    <mvc:default-servlet-handler />
+    <!--向容器自动注入配置-->
+    <context:annotation-config />
+
+
 
 </beans>

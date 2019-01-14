@@ -21,7 +21,7 @@
             <a href="/admin/page.do" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    管理员控制台
+                    新一代电力市场仿真平台
                 </small>
             </a>
         </div>
@@ -122,6 +122,100 @@
                         <a class="popstyle" href="/sys/log/log.page" target="_blank">
                             <i class="menu-icon fa fa-caret-right"></i>
                             权限更新记录
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> 电力市场可视化 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a class="popstyle" href="/config/config.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            节点定义
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a class="popstyle" href="/sys/viz/viz.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            电网模型可视化
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a class="popstyle" href="/config/config.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            潮流可视化
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> 电力交易模拟器 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a class="popstyle" href="/config/config.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            全局配置管理
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> 市场成员模拟 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a class="popstyle" href="/config/config.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            全局配置管理
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> 市场评估与结果分析 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a class="popstyle" href="/config/config.page" target="_blank">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            全局配置管理
                         </a>
                         <b class="arrow"></b>
                     </li>
