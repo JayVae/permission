@@ -3,12 +3,12 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Webgraphviz</title>
+    <title>数据模型定义</title>
 </head>
 <body>
 
 <style>
-    button { margin:4px; cursor:pointer; font-size: 70%; font-family; arial,sans-serif; margin-right: 5px }
+    button { margin:4px; cursor:pointer; font-size: 70%;font-family:arial,sans-serif; margin-right: 5px }
 </style>
 
 

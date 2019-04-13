@@ -100,6 +100,7 @@ public class SysRoleController {
                 unselectedUserList.add(sysUser);
             }
         }
+
         // selectedUserList = selectedUserList.stream().filter(sysUser -> sysUser.getStatus() != 1).collect(Collectors.toList());
         Map<String, List<SysUser>> map = Maps.newHashMap();
         map.put("selected", selectedUserList);

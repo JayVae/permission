@@ -29,6 +29,29 @@
     <!-- Custom styles for this template -->
     <link href="css/signin.css" rel="stylesheet">
 
+    <style>
+
+        body{
+            padding-top:50px;
+            padding-bottom:50px;
+            background-color:#aaa;
+        }
+
+        body {
+            background: url("images/bg.jpg");
+            background-position: center 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+        }
+
+
+    </style>
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -96,21 +119,52 @@
 
 <body>
 
-<div class="container">
-    <form class="form-signin" onsubmit="return check();" action="/login.page?ret=<%=ret%>" method="post">
-        <h2 class="form-signin-heading">请登陆</h2>
-        <label for="inputEmail" class="sr-only">邮箱/电话</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Email/Telephone" name="username" required autofocus value="${username}">
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required >
-        <div style="margin-bottom:10px;">
-            <input id="validateCode" class="form-control" placeholder="请输入验证码" name="validateCode" required >
-            <img id="imgObj" style="height:40px;"  title="点击我,换一个！" src="/VerifyCode" onclick="changeValidateCode()"/>
-        </div>
-        <div class="checkbox" style="color: red;">${error}</div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>
-        <%--<input type="submit" name="submit" value="登录">--%>
-    </form>
+<div class="container-fluid">
+    <div class="row center-block">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-3">
+
+                <div class="carousel slide" id="carousel-629360">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-629360"></li>
+                        <li data-slide-to="1" data-target="#carousel-629360" class=""></li>
+                        <li data-slide-to="2" data-target="#carousel-629360" class=""></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active"> <img alt="" src="img/1.jpg">
+                            <div class="carousel-caption" contenteditable="true">
+                                <h4>棒球</h4>
+                                <p>棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。</p>
+                            </div>
+                        </div>
+                        <div class="item"> <img alt="" src="images/电网.jpg">
+                            <div class="carousel-caption" contenteditable="true">
+                            </div>
+                        </div>
+                        <h1>欢迎访问电力市场仿真系统</h1>
+                    </div>
+                    <a data-slide="prev" href="#carousel-629360" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-629360" class="right carousel-control">›</a> </div>
+            </div>
+            <div class="col-xs-3">
+                <form class="form-signin" onsubmit="return check();" action="/login.page?ret=<%=ret%>" method="post">
+                    <h3 class="form-signin-heading">请登陆</h3>
+                    <label for="inputEmail" class="sr-only">邮箱/电话</label>
+                    <input type="text" id="inputEmail" class="form-control" placeholder="Email/Telephone" name="username" required autofocus value="${username}">
+                    <label for="inputPassword" class="sr-only">密码</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required >
+                    <div style="margin-bottom:10px;">
+                        <input id="validateCode" class="form-control" placeholder="请输入验证码" name="validateCode" required >
+                        <img id="imgObj" style="height:40px;"  title="点击我,换一个！" src="/VerifyCode" onclick="changeValidateCode()"/>
+                    </div>
+                    <div class="checkbox" style="color: red;">${error}</div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">登 陆</button>
+                    <%--<input type="submit" name="submit" value="登录">--%>
+                </form>
+            </div>
+            <div class="col-xs-3">
+            </div>
+    </div>
 </div>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
