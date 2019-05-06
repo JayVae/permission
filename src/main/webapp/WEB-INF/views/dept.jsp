@@ -498,6 +498,7 @@
                 model: true,
                 title: "新增部门",
                 open: function(event, ui) {
+//                    关闭原有的关闭×
                     $(".ui-dialog-titlebar-close", $(this).parent()).hide();
                     optionStr = "<option value=\"0\">-</option>";
                     recursiveRenderDeptSelect(deptList, 1);
